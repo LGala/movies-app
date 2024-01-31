@@ -3,7 +3,7 @@ package io.lorenzo.movies_api.config;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
-import java.io.IOException;
+import lombok.SneakyThrows;
 
 
 /**
@@ -12,8 +12,8 @@ import java.io.IOException;
 public class StringTrimmerDeserializer extends JsonDeserializer<String> {
 
     @Override
-    public String deserialize(final JsonParser jsonParser, final DeserializationContext context)
-            throws IOException {
+    @SneakyThrows
+    public String deserialize(final JsonParser jsonParser, final DeserializationContext context) {
         String value = jsonParser.getValueAsString();
         if (value == null) {
             return null;
